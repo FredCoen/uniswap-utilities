@@ -5,7 +5,7 @@ use ethers::{
     contract::Contract,
     providers::Middleware,
 };
-
+/// returns token1 per token0 spot rate with 18 decimals of precision
 pub async fn get_spot_price<M: Middleware>(
     uniswap_pool: &Contract<M>,
     token0_decimals: Uint,
