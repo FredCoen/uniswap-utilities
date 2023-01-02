@@ -17,8 +17,6 @@ pub async fn get_spot_price<M: Middleware>(
         .await
         .expect("Retrieving sqrt_ratio_x96 failed");
 
-    return sqrt_ratio_x96
-        .pow(Uint::from(2))
-        .mul(Uint::from(10).pow(token0_decimals))
-        / Uint::from(2).pow(Uint::from(192));
+    return (sqrt_ratio_x96.pow(Uint::from(2)) / Uint::from(2).pow(Uint::from(192)))
+        .mul(Uint::from(10).pow(token0_decimals));
 }
